@@ -88,7 +88,7 @@ public class BigInt extends BigInteger {
     }
     
     /**
-     * Indexes: 11 10 9 8 7 6 5 4 3 2 1 0 
+     * Indexes: ... 11 10 9 8 7 6 5 4 3 2 1 0 
      * @param index digit position
      * @return digit at the given position
      */

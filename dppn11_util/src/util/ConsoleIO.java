@@ -4,13 +4,16 @@ package util;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintStream;
 
 /**
  *
  * @author Daniel Plaza
  */
-public abstract class ConsoleIO {
+public enum ConsoleIO {;
     private static final BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
+    private static final PrintStream ps = System.out;
+    private static final PrintStream perr = System.err;
     
     /**
      * Reads the next input line of the console
@@ -29,7 +32,7 @@ public abstract class ConsoleIO {
      * @param line text to be printed
      */
     public static void print(Object line){
-        System.out.print(line.toString());
+        ps.print(line.toString());
     }
     
     /**
@@ -37,14 +40,14 @@ public abstract class ConsoleIO {
      * @param line text line to be printed
      */
     public static void println(Object line){
-        System.out.println(line.toString());
+        ps.println(line.toString());
     }
     
     /**
      * Terminates the current line
      */
     public static void println(){
-        System.out.println();
+        ps.println();
     }
     
     /**
@@ -53,7 +56,7 @@ public abstract class ConsoleIO {
      * @param args arguments of the line
      */
     public static void printf(String format, Object... args){
-        System.out.printf(format, args);
+        ps.printf(format, args);
     }
     
     /**
@@ -61,7 +64,7 @@ public abstract class ConsoleIO {
      * @param line error line text
      */
     public static void printerr(Object line){
-        System.err.println(line);
+        perr.println(line);        
     }
     
 }

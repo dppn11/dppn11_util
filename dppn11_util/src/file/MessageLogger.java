@@ -8,14 +8,14 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import util.MiscUtil;
 
 /**
  *
  * @author Daniel Plaza
  */
 public abstract class MessageLogger {
-
-    private static final SimpleDateFormat DATEFORMAT = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+  
     private static final String SEPARATOR=" ---> ";
     private static final String NEWSESSION="New session initiated";
     
@@ -25,7 +25,7 @@ public abstract class MessageLogger {
         if(logFile!=null){
             try {
                 ps = new PrintStream(new BufferedOutputStream(new FileOutputStream(logFile, append)), append);
-                ps.println(NEWSESSION+SEPARATOR+DATEFORMAT.format(new Date()));
+                ps.println(NEWSESSION+SEPARATOR+MiscUtil.DEFAULTDATEFORMAT.format(new Date()));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -37,7 +37,7 @@ public abstract class MessageLogger {
      */
     public MessageLogger(){
         ps = new PrintStream((OutputStream)(System.out));
-        ps.println(NEWSESSION+SEPARATOR+DATEFORMAT.format(new Date()));
+        ps.println(NEWSESSION+SEPARATOR+MiscUtil.DEFAULTDATEFORMAT.format(new Date()));
     }
     
     public MessageLogger(String logFile,boolean append){
@@ -54,7 +54,7 @@ public abstract class MessageLogger {
     
     protected void writeToLog(String line){
         if(ps!=null){
-            ps.println(DATEFORMAT.format(new Date())+SEPARATOR+line);
+            ps.println(MiscUtil.DEFAULTDATEFORMAT.format(new Date())+SEPARATOR+line);
         }  
     }
 }

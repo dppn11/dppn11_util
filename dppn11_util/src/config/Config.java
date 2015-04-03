@@ -10,8 +10,8 @@ import file.MessageLogger;
 import java.io.FileOutputStream;
 
 /**
- * Helps to manage a configuration file and its settings. Works as a wrapper for
- * the class Properties
+ * Helps to manage a configuration file and its settings. It Works as a wrapper 
+ * for the class java.util.Properties
  *
  * @author Daniel Plaza
  */
@@ -21,7 +21,7 @@ public class Config extends MessageLogger {
     private Properties p;
 
     /**
-     * Create the Configuration class
+     * Creates the Configuration class
      *
      * @param configFilePath
      * @param configLogger if null no log output
