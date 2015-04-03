@@ -16,7 +16,7 @@ import java.io.FileOutputStream;
  * @author Daniel Plaza
  */
 public class Config extends MessageLogger {
-
+    
     private File configPath;
     private Properties p;
 
@@ -30,6 +30,7 @@ public class Config extends MessageLogger {
         super(configLogger, true);
         this.configPath = configFilePath;
         p = new Properties();
+        readProperties();
     }
     
     /**
@@ -41,6 +42,7 @@ public class Config extends MessageLogger {
         super();
         this.configPath = configFilePath;
         p = new Properties();
+        readProperties();
     }    
 
     /**
@@ -63,7 +65,7 @@ public class Config extends MessageLogger {
         try {
             input = new FileInputStream(configPath);
             p.load(input);
-            writeToLog("Configuration file loaded");
+            writeToLog("Configuration file \""+configPath.getName()+"\" loaded");
         } catch (IOException ex) {
             if(re!=null)
                 re.execute();
@@ -85,6 +87,7 @@ public class Config extends MessageLogger {
     public void readProperties() {
         readProperties(() -> {
             save(true);
+            writeToLog("Configuration file \""+configPath.getName()+"\" created");
         });
     }
 
@@ -99,7 +102,7 @@ public class Config extends MessageLogger {
                 FileUtil.copyFile(configPath, new File(configPath + ".backup")); 
             output = new FileOutputStream(configPath);
             p.store(output, null);
-            writeToLog("Configuration file saved");
+            writeToLog("Configuration file \""+configPath.getName()+"\" saved");
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -120,4 +123,5 @@ public class Config extends MessageLogger {
     public interface ReadingError {
         public void execute();
     }
+    
 }

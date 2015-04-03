@@ -35,6 +35,7 @@ import org.xml.sax.SAXException;
  * @author Daniel Plaza
  */
 public class Language extends MessageLogger{
+    
     private Document doc;
     private final File langFile;
 
@@ -50,6 +51,7 @@ public class Language extends MessageLogger{
             }
             doc = dBuilder.parse(langFile);
             doc.getDocumentElement().normalize();
+            writeToLog("\""+langFile.getName()+"\" loaded");
         } catch (SAXException | ParserConfigurationException | IOException e) {
             e.printStackTrace();
         }
@@ -67,6 +69,7 @@ public class Language extends MessageLogger{
             }
             doc = dBuilder.parse(langFile);
             doc.getDocumentElement().normalize();
+            writeToLog("\""+langFile.getName()+"\" loaded");
         } catch (SAXException | ParserConfigurationException | IOException e) {
             e.printStackTrace();
         }
@@ -93,7 +96,7 @@ public class Language extends MessageLogger{
             }
             return nodeList.item(0).getTextContent();
         } catch (NullPointerException e) {
-            writeToLog("Can not find any <" + markup + "> item in " + langFile.getName());
+            writeToLog("Cannot find any <" + markup + "> item in " + langFile.getName());
             return "#<" + markup + ">";
         }
     }
