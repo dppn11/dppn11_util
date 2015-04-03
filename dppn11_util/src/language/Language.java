@@ -12,6 +12,9 @@ import org.xml.sax.SAXException;
 
 
 /**
+ * 
+ * ****COMMENTS MAY CONTAIN ERRORS, NOT IMPLEMTENTED YET
+ * 
  * Esta clase permite obtener el texto de una etiqueta xml pasandole el nombre
  * de la etiqueta. La clase esta diseñada con un patron de diseño singleton.
  *
